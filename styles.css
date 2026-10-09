@@ -24,3 +24,123 @@ body {
     color: var(--very-dark-blue-text);
 }
 
+/* Header Styles */
+header {
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-family: inherit;     
+    font-size: 1.1rem;      
+    font-weight: 800; 
+    line-height: 1;    
+    margin: 0;
+    color: var(--very-dark-blue-text);
+} 
+
+.theme-toggle {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--very-dark-blue-text);
+}
+
+.theme-toggle:hover {
+    opacity: 0.5;
+}
+
+/* Controls Wrapper (Search & Filter Bar) */
+.input-container {
+    max-width: 1280px;
+    margin: 30px auto;
+    padding: 0 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Search Box Styles */
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    align-items: center;
+}
+
+.search-container .fa-magnifying-glass {
+    position: absolute;
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--dark-gray);
+    font-size: 1rem;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.search-container input {
+    width: 70%;
+    height: 45px;
+    padding: 0 24px 0 74px; 
+    border: none;
+    border-radius: 5px;
+    background-color: var(--white);
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.05);
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: var(--very-dark-blue-text);
+    outline: none;
+}
+
+.search-container input::placeholder {
+    color: var(--dark-gray);
+}
+
+/* Dropdown Filter Styles */
+.dropdown-toggle {
+    width: 200px;
+    height: 45px;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--white);
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.05);
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: var(--very-dark-blue-text);
+    cursor: pointer;
+    outline: none;
+}
+
+
+.display-container{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap:10px;
+
+}
