@@ -37,3 +37,36 @@ Core Features & User Stories:
 */
 
 
+
+const displayInput = document.getElementById("display-input");
+const searchInput = document.getElementById("search-input");
+
+let countries =[];
+
+async function fetchCountries() {
+    try{
+        const response = await fetch("./rest-countries-api-with-color-theme-switcher-master/data.json");
+
+        countries = await response.json();
+
+        console.log(countries);
+    }
+    catch (error)
+    {
+       console.error("Unable to load countries: ",error);
+    }
+
+}
+fetchCountries();
+
+// const countries =[
+//     {
+//         name: string;
+//         population: number;
+//         region: string;
+//         capital: string;
+//     }
+// ];
+
+
+
