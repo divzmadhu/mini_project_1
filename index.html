@@ -20,8 +20,58 @@
 </head>
 
 <body>
-    <h1>Where in the world </h1>
-    <p>Dark Mode</p>
+
+    <section class=body-container>
+        <header class="" header>
+
+            <div class="header-container">
+                <h1>Where in the world?</h1>
+                <!-- <span><p>Where in the world?</p></span> -->
+                <!-- Group icon and text inside a clickable button -->
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fa-regular fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="input-container">    <!-- this includes the search container and the filter conatiner -->
+            <!-- for the search -->
+            <div class="search-container">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+               
+                <input type="search" id="search-input" name="search" placeholder="Search for a country.."
+                    aria-label="Search for a country">
+                   
+            </div>
+
+            <!-- for the filter by country -->
+            <div class="filter-container">
+
+                <div class="custom-dropdown" id="region-dropdown">
+                    <button class="dropdown-toggle" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="selected-option">Filter by Region</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+
+                    <ul class="dropdown-menu" role="listbox" hidden>
+                        <li role="option" data-value="all">All Regions</li>
+                        <li role="option" data-value="Africa">Africa</li>
+                        <li role="option" data-value="Americas">Americas</li>
+                        <li role="option" data-value="Asia">Asia</li>
+                        <li role="option" data-value="Europe">Europe</li>
+                        <li role="option" data-value="Oceania">Oceania</li>
+                    </ul>
+                </div>
+            </div>
+        </div><!-- End of  input container -->
+
+        <div class = display-container id ="dsplay-conytainer">
+
+        </div>
+
+    </section> <!-- End of  body container -->
 
 </body>
 
