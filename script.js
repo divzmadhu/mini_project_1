@@ -15,10 +15,10 @@ REST COUNTRIES API - APPLICATION REQUIREMENTS
 
 Core Features & User Stories:
 
-  • Homepage Country Grid
+  • 1. Homepage Country Grid
     - Display all countries fetched from the REST Countries API on load.
 
-  • Search Functionality
+  • 2. Search Functionality
     - Real-time search/filtering of countries using an input field.
 
   • Region Filtering
@@ -38,26 +38,42 @@ Core Features & User Stories:
 
 
 
-const displayInput = document.getElementById("display-input");
+const display = document.getElementById("display-container-on-load");
 const searchInput = document.getElementById("search-input");
 
-let countries =[];
+let countries = [];
 
 async function fetchCountries() {
-    try{
+    
+    try {
         const response = await fetch("./rest-countries-api-with-color-theme-switcher-master/data.json");
-
         countries = await response.json();
+        displayCountries(countries);
 
-        console.log(countries);
+        //console.log(countries);
     }
-    catch (error)
-    {
-       console.error("Unable to load countries: ",error);
+    catch (error) {
+         console.error("Unable to load countries: ", error);
     }
 
 }
 fetchCountries();
+
+function displayCountries(countryList) {
+    let displayData = {};
+    for (let i = 0; i < countryList.length; i++) {
+        if (countryList[i].name === "Albania") {
+            displayData = countryList[i];
+            console.log("The country info is ", displayData)
+        }
+
+    }
+
+}
+
+
+
+
 
 // const countries =[
 //     {
