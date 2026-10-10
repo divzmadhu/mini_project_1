@@ -95,7 +95,23 @@ function displayCountries(countryList) {
         //Display the country name
         const countryName = document.createElement("p");
         countryName.textContent = countryList[i].name;
+
         countryCard.appendChild(document.createTextNode(countryList[i].name));
+
+        const population = document.createElement("p");
+        population.textContent = countryList[i].population;
+        countryCard.appendChild(population);
+
+
+        const region = document.createElement("p");
+        region.textContent = countryList[i].region;
+        countryCard.appendChild(region);
+
+
+        const capital = document.createElement("p");
+        capital.textContent = countryList[i].capital;
+        countryCard.appendChild(capital);
+
 
         //Add the country name to the card 
         display.appendChild(countryName);
