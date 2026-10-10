@@ -21,16 +21,16 @@ Core Features & User Stories:
   • 2. Search Functionality
     - Real-time search/filtering of countries using an input field.
 
-  • Region Filtering
+  • 3. Region Filtering
     - Filter the list of displayed countries by geographical region.
 
-  • Detailed Country View
+  • 4. Detailed Country View
     - Navigate to a separate page/view showing in-depth country details upon click.
 
-  • Interactive Border Navigation
+  • 5. Interactive Border Navigation
     - Clickable border country tags on the detail page to jump between countries.
 
-  • Theme Toggle (Optional)
+  • 6. Theme Toggle (Optional)
     - Toggle color scheme seamlessly between Light and Dark modes.
 
 =============================================================================
@@ -50,7 +50,7 @@ async function fetchCountries() {
         countries = await response.json();
 
         let resultRegionFilter = regionFilter("Europe");
-        
+
         console.log(resultRegionFilter);
 
         let resultSearch = search("Albania");
@@ -71,15 +71,18 @@ fetchCountries();
 
 function displayCountries(countryList) {
     let displayData = {};
-    for (let i = 0; i < countryList.length; i++) {
-        if (countryList[i].name === "Albania") {
-            displayData = countryList[i];
-            // console.log("The country info is ", displayData)
-        }
-
+    for (let i = 0; i < countryList.length; i++) {       
+        
+        displayData = countryList[i];
+        const countryCard = document.createElement("article");
+        countryCard.textContent  = countryList[i].name;
+        display.appendChild(countryCard);
+       // console.log("The country info is ", displayData)
+        console.log(display);
     }
 
 }
+
 
 function search(countryName) {
     for (let i = 0; i < countries.length; i++) {
@@ -91,13 +94,15 @@ function search(countryName) {
 
 
 
-function regionFilter(region)
-{
-    for (let i=0;i<countries.length;i++)
-        if (countries[i].region === region)
-        {
-            return countries[i];
+function regionFilter(region) {
+    let resultList = [];
+    for (let i = 0; i < countries.length; i++) {
+        if (countries[i].region === region) {
+            resultList.push(countries[i]);
+
         }
+    }
+    return resultList;
 }
 
 
