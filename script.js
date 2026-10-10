@@ -70,17 +70,41 @@ async function fetchCountries() {
 fetchCountries();
 
 function displayCountries(countryList) {
-    let displayData = {};
-    for (let i = 0; i < countryList.length; i++) {       
-        
-        displayData = countryList[i];
-        const countryCard = document.createElement("article");
-        countryCard.textContent  = countryList[i].name;
-        display.appendChild(countryCard);
-       // console.log("The country info is ", displayData)
-        console.log(display);
-    }
+    // let displayData = {};
+    for (let i = 0; i < countryList.length; i++) {
 
+        displayData = countryList[i];
+
+        // Create a country card
+        const countryCard = document.createElement("article");
+        countryCard.classList.add("country-card");
+
+        //Creating the image element
+        const countryFlag = document.createElement("img");
+
+
+        //Assigning the flag URL
+        countryFlag.src = countryList[i].flags.svg;
+        countryFlag.alt = `Flag of ${countryList[i].name}`;
+
+
+        //Add the Flag to the country card
+        countryCard.appendChild(countryFlag);
+
+
+        //Display the country name
+        const countryName = document.createElement("p");
+        countryName.textContent = countryList[i].name;
+        countryCard.appendChild(document.createTextNode(countryList[i].name));
+
+        //Add the country name to the card 
+        display.appendChild(countryName);
+
+        //Add the completed card to the display container
+        display.appendChild(countryCard);
+
+
+    }
 }
 
 
