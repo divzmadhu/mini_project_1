@@ -48,10 +48,15 @@ async function fetchCountries() {
     try {
         const response = await fetch("./rest-countries-api-with-color-theme-switcher-master/data.json");
         countries = await response.json();
-        let result = search("Albania");
-        //console.log(result);
 
-        console.log("The searched country inforamation is ", result);
+        let resultRegionFilter = regionFilter("Europe");
+        
+        console.log(resultRegionFilter);
+
+        let resultSearch = search("Albania");
+
+        console.log("The searched country inforamation is ", resultSearch);
+
 
         displayCountries(countries);
 
@@ -86,7 +91,14 @@ function search(countryName) {
 
 
 
-// function region_filter(region)
+function regionFilter(region)
+{
+    for (let i=0;i<countries.length;i++)
+        if (countries[i].region === region)
+        {
+            return countries[i];
+        }
+}
 
 
 
