@@ -44,16 +44,21 @@ const searchInput = document.getElementById("search-input");
 let countries = [];
 
 async function fetchCountries() {
-    
+
     try {
         const response = await fetch("./rest-countries-api-with-color-theme-switcher-master/data.json");
         countries = await response.json();
+        let result = search("Albania");
+        //console.log(result);
+
+        console.log("The searched country inforamation is ", result);
+
         displayCountries(countries);
 
         //console.log(countries);
     }
     catch (error) {
-         console.error("Unable to load countries: ", error);
+        console.error("Unable to load countries: ", error);
     }
 
 }
@@ -64,13 +69,24 @@ function displayCountries(countryList) {
     for (let i = 0; i < countryList.length; i++) {
         if (countryList[i].name === "Albania") {
             displayData = countryList[i];
-            console.log("The country info is ", displayData)
+            // console.log("The country info is ", displayData)
         }
 
     }
 
 }
 
+function search(countryName) {
+    for (let i = 0; i < countries.length; i++) {
+        if (countries[i].name === countryName) {
+            return countries[i];
+        }
+    }
+}
+
+
+
+// function region_filter(region)
 
 
 
