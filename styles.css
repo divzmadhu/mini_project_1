@@ -155,4 +155,6 @@ header h1 {
 .country-card img {
     width: 100%;
     display: block;
+    height: 180px;
+    object-fit: cover;
 }
