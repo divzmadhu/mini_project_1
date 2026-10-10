@@ -20,3 +20,6 @@ REST Countries Project - My Progress ( 10/10/26)
 9. Completed the homepage country grid. Next, I will implement the search functionality to find countries by name.
 
 
+
+
+

@@ -51,11 +51,11 @@ async function fetchCountries() {
 
         let resultRegionFilter = regionFilter("Europe");
 
-        //console.log(resultRegionFilter);
+        //console.log(resultRegionFilter);   //test call
 
-        let resultSearch = search("Albania");
+        // let resultSearch = search("Albania");    // test call
 
-        //console.log("The searched country inforamation is ", resultSearch);
+        //console.log("The searched country inforamation is ", resultSearch);   //test call
 
 
         displayCountries(countries);
@@ -128,13 +128,45 @@ function displayCountries(countryList) {
     }
 }
 
+// test function
+// function search(countryName) {            
+//     for (let i = 0; i < countries.length; i++) {
+//         if (countries[i].name === countryName) {
+//             return countries[i];
+//         }
+//     }
+// }
 
-function search(countryName) {
-    for (let i = 0; i < countries.length; i++) {
-        if (countries[i].name === countryName) {
-            return countries[i];
-        }
+searchInput.addEventListener("input",function(){
+{
+    search();
+}
+});
+function search()
+{
+    let searchList =[];   
+    const query = searchInput.value.trim().toLowerCase();
+    console.log("Searching for :" , query);
+
+    //if the input is empty, stop or clear the result
+    if(query === "")
+    {
+        return;
     }
+    for (let i=0; i<countries.length; i++)
+    {
+        const countryName = countries[i].name.toLowerCase(); 
+        if ( countryName.includes(query))
+            {
+                //displayCountries(countries[i]);
+                //break;
+                searchList.push(countries[i]);
+            } 
+    } 
+    display.innerHTML = "";
+    //return searchList;
+    console.log(searchList)
+    displayCountries(searchList);
 }
 
 
