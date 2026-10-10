@@ -51,11 +51,11 @@ async function fetchCountries() {
 
         let resultRegionFilter = regionFilter("Europe");
 
-        console.log(resultRegionFilter);
+        //console.log(resultRegionFilter);
 
         let resultSearch = search("Albania");
 
-        console.log("The searched country inforamation is ", resultSearch);
+        //console.log("The searched country inforamation is ", resultSearch);
 
 
         displayCountries(countries);
@@ -63,14 +63,19 @@ async function fetchCountries() {
         //console.log(countries);
     }
     catch (error) {
-        console.error("Unable to load countries: ", error);
+        //console.error("Unable to load countries: ", error);
     }
 
 }
 fetchCountries();
 
+
+
 function displayCountries(countryList) {
     // let displayData = {};
+
+    console.log("Displaying countries:", countryList.length);
+
     for (let i = 0; i < countryList.length; i++) {
 
         displayData = countryList[i];
@@ -96,7 +101,7 @@ function displayCountries(countryList) {
         const countryName = document.createElement("p");
         countryName.textContent = countryList[i].name;
 
-        countryCard.appendChild(document.createTextNode(countryList[i].name));
+        // countryCard.appendChild(document.createTextNode(countryList[i].name));
 
         const population = document.createElement("p");
         population.textContent = countryList[i].population;
@@ -114,7 +119,7 @@ function displayCountries(countryList) {
 
 
         //Add the country name to the card 
-        display.appendChild(countryName);
+        // display.appendChild(countryName);
 
         //Add the completed card to the display container
         display.appendChild(countryCard);
