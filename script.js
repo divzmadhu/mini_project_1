@@ -43,9 +43,13 @@ const searchInput = document.getElementById("search-input");
 const regionInput = document.getElementById("region-dropdown");
 const regionOptions = document.querySelectorAll("#region-dropdown li");
 const countryDetails = document.getElementById("country-details");
+const themeToggle = document.getElementById("theme-toggle");
+const themeText = themeToggle.querySelector("span");
 // const backButton = document.getElementById("back-button");
 
 let countries = [];
+
+
 
 async function fetchCountries() {
 
@@ -108,95 +112,101 @@ function displayCountries(countryList) {
 
         //     console.log(countryList[i]);
         // });
+
+        // countryCard.addEventListener("click", function () {
+        //     display.hidden = true;
+        //     countryDetails.hidden = false;
+
+        //     // const country = countryList[i];
+        //     // countryDetails.appendChild(subregion);
+        //     // countryDetails.appendChild(nativeName);
+        //     // countryDetails.appendChild(domain);
+        //     // countryDetails.appendChild(currencies);
+        //     // countryDetails.appendChild(languages);
+
+        //     const country = countryList[i];
+
+        //     // Create the Back button
+        //     const backButton = document.createElement("button");
+        //     backButton.textContent = "← Back";
+
+        //     // Create the country name
+        //     const countryName = document.createElement("h2");
+        //     countryName.textContent = country.name;
+
+        //     // Create the flag
+        //     const flag = document.createElement("img");
+        //     flag.src = country.flags.svg;
+        //     flag.alt = "Flag of " + country.name;
+
+        //     // Create the population
+        //     const population = document.createElement("p");
+        //     population.textContent = "Population: " + country.population;
+
+        //     // Create the region
+        //     const region = document.createElement("p");
+        //     region.textContent = "Region: " + country.region;
+
+        //     // Create the capital
+        //     const capital = document.createElement("p");
+        //     capital.textContent = "Capital: " + country.capital;
+
+        //     // Create the subregion
+        //     const subregion = document.createElement("p");
+        //     subregion.textContent = "Sub Region: " + country.subregion;
+        //     // countryDetails.appendChild(subregion);
+
+        //     // Create the native name
+        //     const nativeName = document.createElement("p");
+        //     nativeName.textContent = "Native Name: " + country.nativeName;
+
+        //     // Create the top-level domain
+        //     const domain = document.createElement("p");
+        //     domain.textContent = "Top Level Domain: " + country.topLevelDomain;
+
+        //     // Create the currencies
+        //     const currencies = document.createElement("p");
+        //     // currencies.textContent = "Currencies: " + country.currencies;
+
+        //     currencies.textContent = "Currencies: " + country.currencies.map(function (currency) {
+        //         return currency.name;
+        //     }).join(", ");
+
+        //     // Create the languages
+        //     const languages = document.createElement("p");
+        //     // languages.textContent = "Languages: " + country.languages;
+
+        //     languages.textContent = "Languages: " + country.languages.map(function (language) {
+        //         return language.name;
+        //     }).join(", ");
+
+        //     // Clear previous details
+        //     countryDetails.innerHTML = "";
+
+        //     // Add the elements to the page
+        //     countryDetails.appendChild(backButton);
+        //     countryDetails.appendChild(countryName);
+        //     countryDetails.appendChild(flag);
+        //     countryDetails.appendChild(population);
+        //     countryDetails.appendChild(region);
+        //     countryDetails.appendChild(capital);
+
+        //     countryDetails.appendChild(subregion);
+        //     countryDetails.appendChild(nativeName);
+        //     countryDetails.appendChild(domain);
+        //     countryDetails.appendChild(currencies);
+        //     countryDetails.appendChild(languages);
+
+        //     // Make the Back button work
+        //     backButton.addEventListener("click", function () {
+        //         countryDetails.hidden = true;
+        //         display.hidden = false;
+        //     });
+        // });
+
         countryCard.addEventListener("click", function () {
-            display.hidden = true;
-            countryDetails.hidden = false;
-
-            // const country = countryList[i];
-            // countryDetails.appendChild(subregion);
-            // countryDetails.appendChild(nativeName);
-            // countryDetails.appendChild(domain);
-            // countryDetails.appendChild(currencies);
-            // countryDetails.appendChild(languages);
-
-            const country = countryList[i];
-
-            // Create the Back button
-            const backButton = document.createElement("button");
-            backButton.textContent = "← Back";
-
-            // Create the country name
-            const countryName = document.createElement("h2");
-            countryName.textContent = country.name;
-
-            // Create the flag
-            const flag = document.createElement("img");
-            flag.src = country.flags.svg;
-            flag.alt = "Flag of " + country.name;
-
-            // Create the population
-            const population = document.createElement("p");
-            population.textContent = "Population: " + country.population;
-
-            // Create the region
-            const region = document.createElement("p");
-            region.textContent = "Region: " + country.region;
-
-            // Create the capital
-            const capital = document.createElement("p");
-            capital.textContent = "Capital: " + country.capital;
-
-            // Create the subregion
-            const subregion = document.createElement("p");
-            subregion.textContent = "Sub Region: " + country.subregion;
-            // countryDetails.appendChild(subregion);
-
-            // Create the native name
-            const nativeName = document.createElement("p");
-            nativeName.textContent = "Native Name: " + country.nativeName;
-
-            // Create the top-level domain
-            const domain = document.createElement("p");
-            domain.textContent = "Top Level Domain: " + country.topLevelDomain;
-
-            // Create the currencies
-            const currencies = document.createElement("p");
-            // currencies.textContent = "Currencies: " + country.currencies;
-
-            currencies.textContent = "Currencies: " + country.currencies.map(function (currency) {
-                return currency.name;
-            }).join(", ");
-
-            // Create the languages
-            const languages = document.createElement("p");
-            // languages.textContent = "Languages: " + country.languages;
-
-            languages.textContent = "Languages: " + country.languages.map(function (language) {
-                return language.name;
-            }).join(", ");
-
-            // Clear previous details
-            countryDetails.innerHTML = "";
-
-            // Add the elements to the page
-            countryDetails.appendChild(backButton);
-            countryDetails.appendChild(countryName);
-            countryDetails.appendChild(flag);
-            countryDetails.appendChild(population);
-            countryDetails.appendChild(region);
-            countryDetails.appendChild(capital);
-
-            countryDetails.appendChild(subregion);
-            countryDetails.appendChild(nativeName);
-            countryDetails.appendChild(domain);
-            countryDetails.appendChild(currencies);
-            countryDetails.appendChild(languages);
-
-            // Make the Back button work
-            backButton.addEventListener("click", function () {
-                countryDetails.hidden = true;
-                display.hidden = false;
-            });
+            searchInput.value = "";
+            showCountryDetails(countryList[i]);
         });
 
         //Creating the image element
@@ -264,6 +274,47 @@ function displayCountries(countryList) {
     }
 }
 
+
+function displayBorderCountries(country) {
+    // Create a heading
+    const borderHeading = document.createElement("h3");
+    borderHeading.textContent = "Border Countries:";
+
+    countryDetails.appendChild(borderHeading);
+
+    // Check whether the country has any borders
+    if (!country.borders || country.borders.length === 0) {
+        const message = document.createElement("p");
+        message.textContent = "No bordering countries.";
+        countryDetails.appendChild(message);
+        return;
+    }
+
+    // Go through each border country code
+    for (let i = 0; i < country.borders.length; i++) {
+        const borderCode = country.borders[i];
+
+        // Find the matching country
+        const borderCountry = countries.find(function (item) {
+            return item.alpha3Code === borderCode;
+        });
+
+        // Create a button if the country is found
+        if (borderCountry) {
+            const borderButton = document.createElement("button");
+            borderButton.textContent = borderCountry.name;
+
+            borderButton.addEventListener("click", function () {
+                showCountryDetails(borderCountry);
+            });
+
+            countryDetails.appendChild(borderButton);
+        }
+    }
+}
+
+
+
 // backButton.addEventListener("click", function () {
 //     countryDetails.hidden = true;
 //     display.hidden = false;
@@ -277,6 +328,91 @@ function displayCountries(countryList) {
 //         }
 //     }
 // }
+
+
+function showCountryDetails(country) {
+
+    display.hidden = true;
+    countryDetails.hidden = false;
+
+    // Create the Back button
+    const backButton = document.createElement("button");
+    backButton.textContent = "← Back";
+
+    // Create the country name
+    const countryName = document.createElement("h2");
+    countryName.textContent = country.name;
+
+    // Create the flag
+    const flag = document.createElement("img");
+    flag.src = country.flags.svg;
+    flag.alt = "Flag of " + country.name;
+
+    // Create the population
+    const population = document.createElement("p");
+    population.textContent = "Population: " + country.population;
+
+    // Create the region
+    const region = document.createElement("p");
+    region.textContent = "Region: " + country.region;
+
+    // Create the capital
+    const capital = document.createElement("p");
+    capital.textContent = "Capital: " + country.capital;
+
+    // Create the subregion
+    const subregion = document.createElement("p");
+    subregion.textContent = "Sub Region: " + country.subregion;
+
+    // Create the native name
+    const nativeName = document.createElement("p");
+    nativeName.textContent = "Native Name: " + country.nativeName;
+
+    // Create the top-level domain
+    const domain = document.createElement("p");
+    domain.textContent = "Top Level Domain: " + country.topLevelDomain;
+
+    // Create the currencies
+    const currencies = document.createElement("p");
+    currencies.textContent = "Currencies: " + country.currencies.map(function (currency) {
+        return currency.name;
+    }).join(", ");
+
+    // Create the languages
+    const languages = document.createElement("p");
+    languages.textContent = "Languages: " + country.languages.map(function (language) {
+        return language.name;
+    }).join(", ");
+
+    // Clear previous details
+    countryDetails.innerHTML = "";
+
+    // Add the elements to the page
+    countryDetails.appendChild(backButton);
+    countryDetails.appendChild(countryName);
+    countryDetails.appendChild(flag);
+    countryDetails.appendChild(population);
+    countryDetails.appendChild(region);
+    countryDetails.appendChild(capital);
+    countryDetails.appendChild(subregion);
+    countryDetails.appendChild(nativeName);
+    countryDetails.appendChild(domain);
+    countryDetails.appendChild(currencies);
+    countryDetails.appendChild(languages);
+
+    // Display border countries
+    displayBorderCountries(country);
+
+    // Make the Back button work
+    backButton.addEventListener("click", function () {
+        searchInput.value = "";
+        countryDetails.hidden = true;
+        display.hidden = false;
+        displayCountries(countries);
+    });
+}
+
+
 
 searchInput.addEventListener("input", function () {
     {
@@ -323,6 +459,7 @@ function search() {
 regionOptions.forEach(function (option) {
     option.addEventListener("click", function () {
         const selectedRegion = option.dataset.value;
+        searchInput.value = "";
         console.log(selectedRegion);
         regionFilter(selectedRegion);
     });
