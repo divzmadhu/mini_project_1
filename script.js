@@ -480,7 +480,9 @@ dropdownToggle.addEventListener("click", function () {
 // }
 // });
 function regionFilter(region) {
+    
     let regionList = [];
+    display.hidden = false;
     if (region === "all") {
         displayCountries(countries);
         return;
@@ -514,4 +516,12 @@ function regionFilter(region) {
 // ];
 
 
+themeToggle.addEventListener("click", function () {
+    document.body.classList.toggle("dark-mode");
 
+    if (document.body.classList.contains("dark-mode")) {
+        themeText.textContent = "Light Mode";
+    } else {
+        themeText.textContent = "Dark Mode";
+    }
+});

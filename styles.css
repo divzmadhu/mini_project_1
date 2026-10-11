@@ -233,3 +233,30 @@ background-color: var(--very-light-gray);
 [hidden] {
     display: none !important;
 }
+
+body.dark-mode {
+    background-color: var(--very-dark-blue);
+    color: var(--white);
+}
+
+/* Dark mode styles */
+body.dark-mode header,
+body.dark-mode .country-card,
+body.dark-mode .search-container input,
+body.dark-mode .dropdown-toggle,
+body.dark-mode .dropdown-menu {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+
+/* Dark mode heading and country information */
+body.dark-mode header h1,
+body.dark-mode .theme-toggle,
+body.dark-mode .card-body p {
+    color: var(--white);
+}
+
+/* Dark mode dropdown hover */
+body.dark-mode .dropdown-menu li:hover {
+    background-color: var(--very-dark-blue);
+}
