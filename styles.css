@@ -131,7 +131,7 @@ header h1 {
     box-shadow: 0 2px 9px rgba(0, 0, 0, 0.05);
     font-family: inherit;
     font-size: 0.9rem;
-    color: var(--very-dark-blue-text);
+    color: var(--dark-gray);
     cursor: pointer;
     outline: none;
 }
@@ -142,7 +142,12 @@ header h1 {
     /* grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr; */
     grid-template-columns:repeat(4,1fr);
-    gap:10px;
+    gap:40px;
+    /* max-width:1280px; */
+    /* margin:0 auto; */
+    /* padding:0 40px; */
+    padding: 0 20px 0px 40px;
+
 
 }
 
@@ -150,11 +155,45 @@ header h1 {
     background-color: var(--white);
     border-radius: 5px;
     overflow: hidden;
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.05);
 }
 
 .country-card img {
     width: 100%;
     display: block;
-    height: 180px;
+    height: 160px;
     object-fit: cover;
+    padding:0;
+    /* padding: 24px;  */
 }
+
+.card-body {
+ /* padding:24px;  */
+ padding: 20px 24px 24px 24px;
+} 
+ 
+
+.card-body h2 {
+    /* font-size: 1.1rem;
+    font-weight: 800;
+    margin: 0 0 16px 0;
+    color: var(--very-dark-blue-text); */
+    font-size: 0.95rem;      /* Reduced from large heading size */
+    font-weight: 600;
+    margin: 0 0 12px 0;       /* Space below country title */
+    /* line-height: 1.2; */
+}
+
+.card-body p {
+    /* font-size: 0.88rem;
+    margin: 0 0 6px 0; /* Tight spacing between info lines */
+    color: var(--very-dark-blue-text);
+    font-size: 0.75rem;      /* Smaller, compact font size */
+    margin: 0 0 4px 10px;        /* Tight vertical spacing between items */
+    line-height: .75;
+}
+
+.card-body p:last-child {
+    margin-bottom: 0;
+}
+

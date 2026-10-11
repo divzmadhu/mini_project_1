@@ -1,5 +1,5 @@
 
-REST Countries Project - My Progress ( 10/10/26)
+REST Countries Project - My Progress ( 09/10/26)
 
 1. Understood the project requirements and the features I needed to build.
 
@@ -19,7 +19,32 @@ REST Countries Project - My Progress ( 10/10/26)
 
 9. Completed the homepage country grid. Next, I will implement the search functionality to find countries by name.
 
+REST Countries Project - My Progress ( 10/10/26)
+
+10.  Completed the search functionality , to find countries by name.
 
 
+### Implementation Notes
 
+
+# Implemented the Display Function
+
+- Used `createElement()` to create country cards and their content dynamically.
+
+- Used `appendChild()` to add country flags and information to each card.
+
+- `Displayed country details` such as name, population, region, and capital.
+
+- `Reused` the same function to display all countries or only the countries matching the search.
+
+
+# Search Functionality
+
+- Used `.includes()` to find countries whose names contain the search text.
+
+- Converted country names and search text to `lowercase` to make the search case-insensitive.
+
+- `Partial searches are supported`, so users don't need to type the entire country name.
+
+- `Cleared the previous results` before displaying the matching countries.
 

@@ -40,6 +40,8 @@ Core Features & User Stories:
 
 const display = document.getElementById("display-container-on-load");
 const searchInput = document.getElementById("search-input");
+const regionInput = document.getElementById("region-dropdown");
+const regionOptions = document.querySelectorAll("#region-dropdown li");
 
 let countries = [];
 
@@ -49,7 +51,7 @@ async function fetchCountries() {
         const response = await fetch("./rest-countries-api-with-color-theme-switcher-master/data.json");
         countries = await response.json();
 
-        let resultRegionFilter = regionFilter("Europe");
+        // let resultRegionFilter = regionFilter("Europe");  //test call
 
         //console.log(resultRegionFilter);   //test call
 
@@ -63,7 +65,7 @@ async function fetchCountries() {
         //console.log(countries);
     }
     catch (error) {
-        //console.error("Unable to load countries: ", error);
+        console.error("Unable to load countries: ", error);
     }
 
 }
@@ -74,7 +76,9 @@ fetchCountries();
 function displayCountries(countryList) {
     // let displayData = {};
 
-    console.log("Displaying countries:", countryList.length);
+    display.innerHTML = "";
+
+    // console.log("Displaying countries:", countryList.length);
 
     for (let i = 0; i < countryList.length; i++) {
 
@@ -98,28 +102,47 @@ function displayCountries(countryList) {
 
 
         //Display the country name
-        const countryName = document.createElement("p");
+        const countryName = document.createElement("h3");
+
         countryName.textContent = countryList[i].name;
+        countryCard.appendChild(countryName);
 
         // countryCard.appendChild(document.createTextNode(countryList[i].name));
 
         const population = document.createElement("p");
-        population.textContent = countryList[i].population;
+        const populationLabel = document.createElement("strong");
+        populationLabel.textContent = "Population: ";
+
+        population.appendChild(populationLabel);
+        population.appendChild(document.createTextNode(countryList[i].population));
+
+        // population.textContent = countryList[i].population;
         countryCard.appendChild(population);
 
 
         const region = document.createElement("p");
-        region.textContent = countryList[i].region;
+        const regionLabel = document.createElement("strong");
+        regionLabel.textContent = "Region: ";
+
+        region.appendChild(regionLabel);
+        region.appendChild(document.createTextNode(countryList[i].region));
+
+        //region.textContent = countryList[i].region;
         countryCard.appendChild(region);
 
 
         const capital = document.createElement("p");
-        capital.textContent = countryList[i].capital;
+        const capitalLabel = document.createElement("strong");
+        capitalLabel.textContent = "Capital: ";
+
+        capital.appendChild(capitalLabel);
+        capital.appendChild(document.createTextNode(countryList[i].capital));
+
+        // capital.textContent = countryList[i].capital;
         countryCard.appendChild(capital);
 
 
-        //Add the country name to the card 
-        // display.appendChild(countryName);
+        
 
         //Add the completed card to the display container
         display.appendChild(countryCard);
@@ -137,32 +160,28 @@ function displayCountries(countryList) {
 //     }
 // }
 
-searchInput.addEventListener("input",function(){
-{
-    search();
-}
+searchInput.addEventListener("input", function () {
+    {
+        search();
+    }
 });
-function search()
-{
-    let searchList =[];   
+function search() {
+    let searchList = [];
     const query = searchInput.value.trim().toLowerCase();
-    console.log("Searching for :" , query);
+    console.log("Searching for :", query);
 
     //if the input is empty, stop or clear the result
-    if(query === "")
-    {
+    if (query === "") {
         return;
     }
-    for (let i=0; i<countries.length; i++)
-    {
-        const countryName = countries[i].name.toLowerCase(); 
-        if ( countryName.includes(query))
-            {
-                //displayCountries(countries[i]);
-                //break;
-                searchList.push(countries[i]);
-            } 
-    } 
+    for (let i = 0; i < countries.length; i++) {
+        const countryName = countries[i].name.toLowerCase();
+        if (countryName.includes(query)) {
+            //displayCountries(countries[i]);
+            //break;
+            searchList.push(countries[i]);
+        }
+    }
     display.innerHTML = "";
     //return searchList;
     console.log(searchList)
@@ -171,18 +190,62 @@ function search()
 
 
 
+// function regionFilter(region) {    // Test Function
+//     let resultList = [];
+//     for (let i = 0; i < countries.length; i++) {
+//         if (countries[i].region === region) {
+//             resultList.push(countries[i]);
+
+//         }
+//     }
+//     return resultList;
+// }
+
+regionOptions.forEach(function (option) {
+    option.addEventListener("click", function () {
+        const selectedRegion = option.dataset.value;
+        console.log(selectedRegion);
+        regionFilter(selectedRegion);
+    });
+
+});
+
+const dropdownToggle = document.querySelector(".dropdown-toggle");
+const dropdownMenu = document.querySelector(".dropdown-menu");
+
+dropdownToggle.addEventListener("click", function () {
+    dropdownMenu.hidden = !dropdownMenu.hidden;
+});
+
+
+// regionInput.addEventListener("input",function(){
+// {
+//     regionFilter();
+// }
+// });
 function regionFilter(region) {
-    let resultList = [];
+    let regionList = [];
+    if (region === "all") {
+        displayCountries(countries);
+        return;
+    }
+    // const query = regionInput.value.trim().toLowerCase();
+    // console.log("Filter region for :", query);
+
+    //if the input is empty, stop or clear the result
+    // if (query === "") {
+    //     return;
+    // }
     for (let i = 0; i < countries.length; i++) {
         if (countries[i].region === region) {
-            resultList.push(countries[i]);
-
+            regionList.push(countries[i]);
         }
     }
-    return resultList;
+    display.innerHTML = "";
+
+    console.log(regionList)
+    displayCountries(regionList);
 }
-
-
 
 
 // const countries =[
