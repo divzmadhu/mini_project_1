@@ -161,11 +161,19 @@ function displayCountries(countryList) {
 
             // Create the currencies
             const currencies = document.createElement("p");
-            currencies.textContent = "Currencies: " + country.currencies;
+            // currencies.textContent = "Currencies: " + country.currencies;
+
+            currencies.textContent = "Currencies: " + country.currencies.map(function (currency) {
+                return currency.name;
+            }).join(", ");
 
             // Create the languages
             const languages = document.createElement("p");
-            languages.textContent = "Languages: " + country.languages;
+            // languages.textContent = "Languages: " + country.languages;
+
+            languages.textContent = "Languages: " + country.languages.map(function (language) {
+                return language.name;
+            }).join(", ");
 
             // Clear previous details
             countryDetails.innerHTML = "";
