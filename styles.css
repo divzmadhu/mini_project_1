@@ -229,3 +229,7 @@ background-color: var(--very-light-gray);
     left: 0;
     z-index: 10;
 }
+
+[hidden] {
+    display: none !important;
+}

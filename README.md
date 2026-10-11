@@ -23,6 +23,8 @@ REST Countries Project - My Progress ( 10/10/26)
 
 10.  Completed the search functionality , to find countries by name.
 
+11. Completed the Filter Region functionality, to display the countries by region, selected from the dropdown list.
+
 
 ### Implementation Notes
 
@@ -47,4 +49,13 @@ REST Countries Project - My Progress ( 10/10/26)
 - `Partial searches are supported`, so users don't need to type the entire country name.
 
 - `Cleared the previous results` before displaying the matching countries.
+
+
+# Filter by Region
+
+- Created a custom dropdown with options for Africa, Americas, Asia, Europe, Oceania, and All Regions.
+
+- Added click events to identify the selected region.
+
+- Filtered the country cards based on the selected region.
 
