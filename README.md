@@ -25,6 +25,12 @@ REST Countries Project - My Progress ( 10/10/26)
 
 11. Completed the Filter Region functionality, to display the countries by region, selected from the dropdown list.
 
+12. Completed the country details and border countries 
+
+13.  Implemented the Theme toggle function
+
+14.  i will be working on - Connecting the project to the live REST Countries API.
+
 
 ### Implementation Notes
 
@@ -58,4 +64,48 @@ REST Countries Project - My Progress ( 10/10/26)
 - Added click events to identify the selected region.
 
 - Filtered the country cards based on the selected region.
+
+# Displaying Country Details
+
+- Added a click event to each country card.
+
+- When a card is clicked, displayed a detailed view of that country.
+
+- Included additional information such as subregion, native name, currencies, languages, and top-level domain.
+
+- Added a Back button to return to the country grid.
+
+# Displaying Border Countries
+
+-Used each country's border codes to identify neighboring countries.
+
+- Matched the border codes with the country data.
+
+- Displayed the neighboring countries as buttons.
+
+- Added click events so users can open another country's details by clicking its button.
+
+# Implementing the Theme Switcher
+
+- Added a button to switch between dark mode and light mode.
+
+- Used JavaScript's classList.toggle() to add or remove the dark-mode class.
+
+- Updated the button text when the theme changed.
+
+- Used CSS variables and dark-mode styles to control the colors.
+
+# Fixing Issues During Development
+
+- Corrected an HTML element ID mismatch that caused JavaScript to return null.
+
+- Checked the data structure to access the correct country properties.
+
+- Used the browser console to identify errors and inspect search and filter results.
+
+- Fixed the hidden display issue by ensuring the country grid became visible when needed.
+
+- Corrected CSS variable names used by the dark-mode styles.
+
+
 
