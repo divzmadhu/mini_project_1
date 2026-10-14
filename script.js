@@ -36,7 +36,7 @@ Core Features & User Stories:
 =============================================================================
 */
 
-
+import {secrets} from "./keys.js";
 
 const display = document.getElementById("display-container-on-load");
 const searchInput = document.getElementById("search-input");
@@ -76,6 +76,42 @@ async function fetchCountries() {
 
 }
 fetchCountries();
+
+
+
+// Fetching data using API
+
+async function testAPI() {
+    try {
+        const response = await fetch(`https://api.restcountries.com/countries/v5/names.common/Canada?pretty=1&api-key=${encodeURIComponent(secrets.API_Key)}`
+);
+
+
+           /* "https://api.restcountries.com/countries/v5/names.common/Canada?pretty=1",
+            {
+                headers: {
+                    Authorization: `Bearer ${secrets.API_Key}`                                   //"Bearer rc_live_demo"
+                }
+            }
+        );*/
+
+        console.log("Status:", response.status);
+
+        const data = await response.json();
+
+        console.log("API data:", data);
+        console.log("Canada data:", data.data.objects[0]);
+
+    } catch (error) {
+        console.error("API error:", error);
+    }
+}
+
+testAPI();
+
+
+
+
 
 
 
@@ -480,7 +516,7 @@ dropdownToggle.addEventListener("click", function () {
 // }
 // });
 function regionFilter(region) {
-    
+
     let regionList = [];
     display.hidden = false;
     if (region === "all") {

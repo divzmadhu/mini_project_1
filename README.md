@@ -31,6 +31,19 @@ REST Countries Project - My Progress ( 10/10/26)
 
 14.  i will be working on - Connecting the project to the live REST Countries API.
 
+15. Added my local website address to the API's allowed origins.
+
+16. Used a query parameter to pass the API key as an alternative to the Authorization header.
+
+17. Tested the API and received Country data successfully.
+
+
+
+##Challenge Faced: 
+- API Authentication and CORS
+
+I initially got a CORS error because my local website was not allowed to access the API. I fixed it by adding my local website address to the allowed origins in the API dashboard. Later, I encountered a warning related to the Authorization header, so I tried passing the API key through a query parameter in the URL. This helped me understand how API authentication and CORS work.
+
 
 ### Implementation Notes
 
