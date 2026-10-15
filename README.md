@@ -39,10 +39,39 @@ REST Countries Project - My Progress ( 10/10/26)
 
 
 
-##Challenge Faced: 
-- API Authentication and CORS
+### Challenge Faced: 
+## API Authentication and CORS
 
 I initially got a CORS error because my local website was not allowed to access the API. I fixed it by adding my local website address to the allowed origins in the API dashboard. Later, I encountered a warning related to the Authorization header, so I tried passing the API key through a query parameter in the URL. This helped me understand how API authentication and CORS work.
+
+## Fetching Countries from the API
+
+Initially, I was fetching only 100 countries from the API using the `limit=100` parameter. When I clicked on Canada, its border information showed the USA, but the USA was not available in the list of countries loaded by my application. Because of this, the USA button was not displayed.
+
+To solve this problem, I updated my `fetchCountries()` function to fetch countries in batches of 100 using the API's pagination parameters. I used a `while` loop to request additional batches until the API indicated that there were no more countries to fetch. I combined the results into a single array called `allCountryObjects`.
+
+I then used my existing `map()` function to organize the API data into the format required by my application.
+
+### Displaying Border Countries
+
+Each country has a `borders` property containing the country codes of its neighboring countries. For example, Canada's border information contains the code `USA`.
+
+My `displayBorderCountries()` function searches the loaded `countries` array for a matching country code. When it finds a match, it creates a button displaying that country's name. Clicking the button opens the selected border country's details.
+
+### Testing
+
+* **Canada:** Confirmed that the United States appears as its border country.
+* **Germany:** Confirmed that Austria, Belgium, Czechia, Denmark, France, Luxembourg, the Netherlands, Poland, and Switzerland appear as border countries.
+
+This helped me understand how API pagination works and how country codes can be used to connect related data.
+
+
+### Missing Flag Images
+  Flags for South Ossetia and Abkhazia were not displaying when fetching country data from the API.
+
+South Ossetia and Abkhazia were displayed without flags when using the API because their flag URLs were empty.
+I noticed that the flags for South Ossetia and Abkhazia were not displaying when using the API. I used console.log() to check whether South Ossetia was present in the country list and then checked its flag URL. The console showed that the flag URL was an empty string. I also tested the application using the local data.json file, where both flags displayed correctly. This helped me identify that the issue was related to the flag data received from the API.
+
 
 
 ### Implementation Notes
@@ -120,5 +149,13 @@ I initially got a CORS error because my local website was not allowed to access 
 
 - Corrected CSS variable names used by the dark-mode styles.
 
+
+After using API
+
+Initially fetched 100 countries from the API.
+Used pagination to fetch additional countries in batches of 100.
+Combined the results into one array.
+Used country codes to find and display border countries as buttons.
+Tested the feature with Canada and Germany.
 
 

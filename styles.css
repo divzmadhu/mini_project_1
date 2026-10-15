@@ -219,6 +219,12 @@ cursor: pointer;
 background-color: var(--very-light-gray); 
 }
 
+.dropdown-menu li.selected {
+    background-color: var(--very-light-gray);
+    color: var(--very-dark-blue-text);
+    font-weight: 800;
+}
+
 .custom-dropdown {
     position: relative;
 }
@@ -259,4 +265,10 @@ body.dark-mode .card-body p {
 /* Dark mode dropdown hover */
 body.dark-mode .dropdown-menu li:hover {
     background-color: var(--very-dark-blue);
+}
+
+body.dark-mode .dropdown-menu li.selected {
+    background-color: var(--very-dark-blue);
+    color: var(--white);
+    font-weight: 800;
 }

@@ -36,6 +36,9 @@ Core Features & User Stories:
 =============================================================================
 */
 
+
+let currentRegion = "all";     // To handle , when two filters selected 
+
 import { secrets } from "./keys.js";
 
 const display = document.getElementById("display-container-on-load");
@@ -110,6 +113,19 @@ async function fetchCountries() {
         //console.log("The searched country inforamation is ", resultSearch);   //test call
 
         console.log("Countries loaded :", countries.length);
+        console.log(
+            "South Ossetia:",
+            countries.find(function (country) {
+                return country.name.toLowerCase().includes("south ossetia");
+            })
+        );
+
+        console.log(
+            "South Ossetia flag URL:",
+            countries.find(function (country) {
+                return country.name.toLowerCase().includes("south ossetia");
+            })?.flags.svg
+        );
         // console.log(
         //     countries.find(function (country) {
         //         return country.name.toLowerCase().includes("abkhazia");
@@ -370,14 +386,14 @@ function displayCountries(countryList) {
 
 
 function displayBorderCountries(country) {
-    console.log("Selected country:", country.name);
-    console.log("Border codes:", country.borders);
-    console.log("Available country codes:", countries.map(function (item) {
-        return item.alpha3Code;
-    }));
-    console.log("USA found:", countries.find(function (country) {
-        return country.alpha3Code === "USA";
-    }));
+    // console.log("Selected country:", country.name);
+    // console.log("Border codes:", country.borders);
+    // console.log("Available country codes:", countries.map(function (item) {
+    //     return item.alpha3Code;
+    // }));
+    // console.log("USA found:", countries.find(function (country) {
+    //     return country.alpha3Code === "USA";
+    // }));
     // Create a heading
     const borderHeading = document.createElement("h3");
     borderHeading.textContent = "Border Countries:";
@@ -532,13 +548,18 @@ function search() {
     console.log("Searching for :", query);
 
     //if the input is empty, stop or clear the result
-    if (query === "") {
-        displayCountries(countries);
-        return;
-    }
+    // if (query === "") {
+    //     displayCountries(countries);
+    //     return;
+    // }
+
     for (let i = 0; i < countries.length; i++) {
         const countryName = countries[i].name.toLowerCase();
-        if (countryName.includes(query)) {
+        // if (countryName.includes(query)) 
+        if (
+            (currentRegion === "all" || countries[i].region === currentRegion) &&
+            countryName.includes(query)
+        ) {
             //displayCountries(countries[i]);
             //break;
             searchList.push(countries[i]);
@@ -566,7 +587,20 @@ function search() {
 regionOptions.forEach(function (option) {
     option.addEventListener("click", function () {
         const selectedRegion = option.dataset.value;
+
+
+        // Remove the highlight from all regions
+        regionOptions.forEach(function (item) {
+            item.classList.remove("selected");
+        });
+
+        // Highlight the currently selected region
+        option.classList.add("selected");
+
+
+
         searchInput.value = "";
+        currentRegion = selectedRegion;
         console.log(selectedRegion);
         regionFilter(selectedRegion);
     });
@@ -586,6 +620,7 @@ dropdownToggle.addEventListener("click", function () {
 //     regionFilter();
 // }
 // });
+
 function regionFilter(region) {
 
     let regionList = [];
