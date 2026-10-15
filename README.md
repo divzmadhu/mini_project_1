@@ -73,6 +73,11 @@ South Ossetia and Abkhazia were displayed without flags when using the API becau
 I noticed that the flags for South Ossetia and Abkhazia were not displaying when using the API. I used console.log() to check whether South Ossetia was present in the country list and then checked its flag URL. The console showed that the flag URL was an empty string. I also tested the application using the local data.json file, where both flags displayed correctly. This helped me identify that the issue was related to the flag data received from the API.
 
 
+### Highlighting the Selected Region
+Making the selected region in the dropdown visually clear.
+Removing the highlight from the previously selected region when a new region is selected.
+Applying the highlight styling in both light and dark modes.
+
 
 ### Implementation Notes
 
@@ -159,3 +164,7 @@ Used country codes to find and display border countries as buttons.
 Tested the feature with Canada and Germany.
 
 
+Region Filter Highlight
+Added a visual highlight to the selected region in the dropdown menu.
+When a new region is selected, the previous highlight is removed and the newly selected region is highlighted.
+Added styling for both light and dark modes.

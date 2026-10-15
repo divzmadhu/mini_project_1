@@ -131,6 +131,7 @@ async function fetchCountries() {
         //         return country.name.toLowerCase().includes("abkhazia");
         //     })
         // );
+        searchInput.value = "";
         displayCountries(countries);
 
         //console.log(countries);
