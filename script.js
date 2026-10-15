@@ -36,7 +36,7 @@ Core Features & User Stories:
 =============================================================================
 */
 
-import {secrets} from "./keys.js";
+import { secrets } from "./keys.js";
 
 const display = document.getElementById("display-container-on-load");
 const searchInput = document.getElementById("search-input");
@@ -54,8 +54,52 @@ let countries = [];
 async function fetchCountries() {
 
     try {
-        const response = await fetch("./rest-countries-api-with-color-theme-switcher-master/data.json");
-        countries = await response.json();
+        //const response = await fetch("./rest-countries-api-with-color-theme-switcher-master/data.json");
+        // const response = await fetch(`https://api.restcountries.com/countries/v5?limit=100&pretty=1&api-key=${encodeURIComponent(secrets.API_Key)}`);
+        // const data = await response.json();
+        const allCountryObjects = [];
+        let offset = 0;
+        let hasMore = true;
+
+        while (hasMore) {
+            const response = await fetch(
+                `https://api.restcountries.com/countries/v5?limit=100&offset=${offset}&pretty=1&api-key=${encodeURIComponent(secrets.API_Key)}`
+            );
+
+            const data = await response.json();
+
+            allCountryObjects.push(...data.data.objects);
+
+            hasMore = data.data.meta.more;
+            offset += 100;
+        }
+
+        console.log("Total countries fetched:", allCountryObjects.length);
+
+        // countries = data.data.objects;
+        // countries = data.data.objects.map(function (country)
+        countries = allCountryObjects.map(function (country) {
+
+            return {
+                name: country.names.common,
+                alpha3Code: country.codes.alpha_3,
+                flags: {
+                    // svg: country.flag.url_svg  // as the flags for few countries not displayed
+                    svg: country.flag?.url_svg || ""
+                },
+                population: country.population,
+                region: country.region,
+                capital: country.capitals?.[0]?.name || "N/A",
+                nativeName: country.names.native
+                    ? Object.values(country.names.native)[0]?.common || "N/A"
+                    : "N/A",
+                subregion: country.subregion || "N/A",
+                topLevelDomain: country.tlds || [],
+                currencies: country.currencies || [],
+                languages: country.languages || [],
+                borders: country.borders || []
+            };
+        });
 
         // let resultRegionFilter = regionFilter("Europe");  //test call
 
@@ -65,7 +109,12 @@ async function fetchCountries() {
 
         //console.log("The searched country inforamation is ", resultSearch);   //test call
 
-
+        console.log("Countries loaded :", countries.length);
+        // console.log(
+        //     countries.find(function (country) {
+        //         return country.name.toLowerCase().includes("abkhazia");
+        //     })
+        // );
         displayCountries(countries);
 
         //console.log(countries);
@@ -79,28 +128,29 @@ fetchCountries();
 
 
 
-// Fetching data using API
-
+// Testing Fetching data using API
+/*
 async function testAPI() {
     try {
-        const response = await fetch(`https://api.restcountries.com/countries/v5/names.common/Canada?pretty=1&api-key=${encodeURIComponent(secrets.API_Key)}`
-);
+        // const response = await fetch(`https://api.restcountries.com/countries/v5/names.common/Canada?pretty=1&api-key=${encodeURIComponent(secrets.API_Key)}`
+        const response = await fetch(`https://api.restcountries.com/countries/v5?limit=100&pretty=1&api-key=${encodeURIComponent(secrets.API_Key)}`
 
 
-           /* "https://api.restcountries.com/countries/v5/names.common/Canada?pretty=1",
-            {
-                headers: {
-                    Authorization: `Bearer ${secrets.API_Key}`                                   //"Bearer rc_live_demo"
-                }
-            }
-        );*/
+
+        );
+
+
 
         console.log("Status:", response.status);
 
         const data = await response.json();
 
-        console.log("API data:", data);
-        console.log("Canada data:", data.data.objects[0]);
+        console.log("API response:", data);
+        console.log("Countries:", data.data.objects);
+        console.log("Number of countries:", data.data.objects.length);
+
+        //console.log("API data:", data);
+        // console.log("Canada data:", data.data.objects[0]);
 
     } catch (error) {
         console.error("API error:", error);
@@ -108,6 +158,7 @@ async function testAPI() {
 }
 
 testAPI();
+*/
 
 
 
@@ -250,7 +301,14 @@ function displayCountries(countryList) {
 
 
         //Assigning the flag URL
+        // countryFlag.src = countryList[i].flags.svg;
+
         countryFlag.src = countryList[i].flags.svg;
+        countryFlag.alt = `Flag of ${countryList[i].name}`;
+
+        countryFlag.addEventListener("error", function () {
+            countryFlag.style.display = "none";
+        });
         countryFlag.alt = `Flag of ${countryList[i].name}`;
 
 
@@ -312,6 +370,14 @@ function displayCountries(countryList) {
 
 
 function displayBorderCountries(country) {
+    console.log("Selected country:", country.name);
+    console.log("Border codes:", country.borders);
+    console.log("Available country codes:", countries.map(function (item) {
+        return item.alpha3Code;
+    }));
+    console.log("USA found:", countries.find(function (country) {
+        return country.alpha3Code === "USA";
+    }));
     // Create a heading
     const borderHeading = document.createElement("h3");
     borderHeading.textContent = "Border Countries:";
@@ -381,7 +447,12 @@ function showCountryDetails(country) {
 
     // Create the flag
     const flag = document.createElement("img");
+    // flag.src = country.flags.svg;
     flag.src = country.flags.svg;
+    flag.addEventListener("error", function () {
+        flag.style.display = "none";
+    });
+
     flag.alt = "Flag of " + country.name;
 
     // Create the population
