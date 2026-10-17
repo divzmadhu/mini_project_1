@@ -39,7 +39,7 @@ Core Features & User Stories:
 
 let currentRegion = "all";     // To handle , when two filters selected 
 
-import { secrets } from "./keys.js";
+// import { secrets } from "./keys.js";
 
 const display = document.getElementById("display-container-on-load");
 const searchInput = document.getElementById("search-input");
@@ -65,8 +65,12 @@ async function fetchCountries() {
         let hasMore = true;
 
         while (hasMore) {
+            // const response = await fetch(
+            //     `https://api.restcountries.com/countries/v5?limit=100&offset=${offset}&pretty=1&api-key=${encodeURIComponent(secrets.API_Key)}`
+            // );
+
             const response = await fetch(
-                `https://api.restcountries.com/countries/v5?limit=100&offset=${offset}&pretty=1&api-key=${encodeURIComponent(secrets.API_Key)}`
+                `/api/countries?offset=${offset}`
             );
 
             const data = await response.json();
@@ -120,20 +124,20 @@ async function fetchCountries() {
         console.log("JSON data size:", jsonData.length);
         console.log("Countries in JSON:", JSON.parse(jsonData).length);
 
-        // Create a downloadable JSON file
-        const blob = new Blob([jsonData], {
-            type: "application/json"
-        });
+        // // Create a downloadable JSON file
+        // const blob = new Blob([jsonData], {
+        //     type: "application/json"
+        // });
 
-        const downloadLink = document.createElement("a");
-        downloadLink.href = URL.createObjectURL(blob);
-        downloadLink.download = "api-countries-backup.json";
+        // const downloadLink = document.createElement("a");
+        // downloadLink.href = URL.createObjectURL(blob);
+        // downloadLink.download = "api-countries-backup.json";
 
-        downloadLink.click();
+        // downloadLink.click();
 
-        setTimeout(function () {
-            URL.revokeObjectURL(downloadLink.href);
-        }, 1000);
+        // setTimeout(function () {
+        //     URL.revokeObjectURL(downloadLink.href);
+        // }, 1000);
 
 
         //DownLoad function ends here 
@@ -166,9 +170,9 @@ async function fetchCountries() {
     }
 
 }
-// fetchCountries();
+fetchCountries();
 
-loadCountriesFromJSON();
+//loadCountriesFromJSON();
 
 
 // Load country data from the local JSON file to avoid repeated API calls during development.
