@@ -66,17 +66,23 @@ My `displayBorderCountries()` function searches the loaded `countries` array for
 This helped me understand how API pagination works and how country codes can be used to connect related data.
 
 
-### Missing Flag Images
-  Flags for South Ossetia and Abkhazia were not displaying when fetching country data from the API.
+### Missing Flag Images  
 
-South Ossetia and Abkhazia were displayed without flags when using the API because their flag URLs were empty.
-I noticed that the flags for South Ossetia and Abkhazia were not displaying when using the API. I used console.log() to check whether South Ossetia was present in the country list and then checked its flag URL. The console showed that the flag URL was an empty string. I also tested the application using the local data.json file, where both flags displayed correctly. This helped me identify that the issue was related to the flag data received from the API.
+The `flags` for `South Ossetia, Abkhazia, Somaliland, and Northern Cyprus` were not displaying when fetching country data from the API. I used console.log() to check the country list and inspect their flag URLs, which were empty.
+
+I then tested the local data.json file using JavaScript's .filter() method to check for these countries , . None of these places were found in the 250 country records, so I did not encounter the same issue with the local data.
+
+I plan to handle these additional flags separately after completing the main project features.
 
 
 ### Highlighting the Selected Region
 Making the selected region in the dropdown visually clear.
 Removing the highlight from the previously selected region when a new region is selected.
 Applying the highlight styling in both light and dark modes.
+
+### Resetting the Search Field on Page Reload
+Noticed that the search field retained the previous search text after refreshing the page, even though all countries were displayed.
+Cleared the search field when loading the country list so that the search field and displayed countries remain consistent after a page reload.
 
 
 ### Implementation Notes
@@ -153,6 +159,14 @@ Applying the highlight styling in both light and dark modes.
 - Fixed the hidden display issue by ensuring the country grid became visible when needed.
 
 - Corrected CSS variable names used by the dark-mode styles.
+
+### Country Data and API Integration
+
+Integrated the REST Countries API to retrieve country information.
+Retrieved 254 country entries using pagination.
+Mapped the API response into a consistent data structure for the application.
+Saved the retrieved country data in api-countries-backup.json for local development and backup purposes.
+Preserved the existing application features while preparing to transition from API-based data loading to local JSON data.
 
 
 After using API

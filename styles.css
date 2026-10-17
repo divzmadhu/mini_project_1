@@ -272,3 +272,10 @@ body.dark-mode .dropdown-menu li.selected {
     color: var(--white);
     font-weight: 800;
 }
+
+
+/* Border country buttons */
+.border-country {
+    margin: 5px;
+}
+

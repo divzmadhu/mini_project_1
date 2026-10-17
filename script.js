@@ -113,6 +113,31 @@ async function fetchCountries() {
         //console.log("The searched country inforamation is ", resultSearch);   //test call
 
         console.log("Countries loaded :", countries.length);
+
+        // Create a JSON string from the fetched country data
+        const jsonData = JSON.stringify(countries, null, 2);
+
+        console.log("JSON data size:", jsonData.length);
+        console.log("Countries in JSON:", JSON.parse(jsonData).length);
+
+        // Create a downloadable JSON file
+        const blob = new Blob([jsonData], {
+            type: "application/json"
+        });
+
+        const downloadLink = document.createElement("a");
+        downloadLink.href = URL.createObjectURL(blob);
+        downloadLink.download = "api-countries-backup.json";
+
+        downloadLink.click();
+
+        setTimeout(function () {
+            URL.revokeObjectURL(downloadLink.href);
+        }, 1000);
+
+
+        //DownLoad function ends here 
+
         console.log(
             "South Ossetia:",
             countries.find(function (country) {
@@ -142,6 +167,40 @@ async function fetchCountries() {
 
 }
 fetchCountries();
+
+// console.log("Countries loaded :", countries.length);
+// console.log(JSON.stringify(countries, null, 2));
+
+
+// //Function to download the countries data as a JSON file for backup or offline use
+
+// const jsonData = JSON.stringify(countries, null, 2);
+
+// console.log("JSON data size:", jsonData.length);
+// console.log("Countries in JSON:", JSON.parse(jsonData).length);
+
+// const blob = new Blob([jsonData], {
+//     type: "application/json"
+// });
+
+// const downloadLink = document.createElement("a");
+// downloadLink.href = URL.createObjectURL(blob);
+// downloadLink.download = "api-countries-backup.json";
+
+// // downloadLink.click();
+
+// // URL.revokeObjectURL(downloadLink.href);
+
+// // javascript
+// downloadLink.click();
+
+// setTimeout(function () {
+//     URL.revokeObjectURL(downloadLink.href);
+// }, 1000);
+
+
+
+
 
 
 
@@ -421,6 +480,7 @@ function displayBorderCountries(country) {
         // Create a button if the country is found
         if (borderCountry) {
             const borderButton = document.createElement("button");
+            borderButton.classList.add("border-country");
             borderButton.textContent = borderCountry.name;
 
             borderButton.addEventListener("click", function () {
