@@ -168,6 +168,11 @@ Mapped the API response into a consistent data structure for the application.
 Saved the retrieved country data in api-countries-backup.json for local development and backup purposes.
 Preserved the existing application features while preparing to transition from API-based data loading to local JSON data.
 
+### Development Notes
+
+* Loaded country data from a local JSON file during development to avoid repeated API requests.
+* Kept the API-fetching function in `script.js` for reference and future use.
+* Used JavaScript's `.includes()` method to support partial country-name searches.
 
 After using API
 

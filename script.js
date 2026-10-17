@@ -166,7 +166,32 @@ async function fetchCountries() {
     }
 
 }
-fetchCountries();
+// fetchCountries();
+
+loadCountriesFromJSON();
+
+
+// Load country data from the local JSON file to avoid repeated API calls during development.
+async function loadCountriesFromJSON() {
+    try {
+        const response = await fetch(
+            "./rest-countries-api-with-color-theme-switcher-master/data_backup.json"
+        );
+
+        if (!response.ok) {
+            throw new Error("Failed to load local country data");
+        }
+
+        countries = await response.json();
+
+        console.log("Countries loaded from local JSON:", countries.length);
+
+        displayCountries(countries);
+
+    } catch (error) {
+        console.error("Unable to load local country data:", error);
+    }
+}
 
 // console.log("Countries loaded :", countries.length);
 // console.log(JSON.stringify(countries, null, 2));
