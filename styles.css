@@ -139,15 +139,9 @@ header h1 {
 
 .display-container {
     display: grid;
-    /* grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr; */
     grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-    /* max-width:1280px; */
-    /* margin:0 auto; */
-    /* padding:0 40px; */
+    gap: 50px;
     padding: 0 20px 0px 40px;
-
 
 }
 
@@ -159,61 +153,35 @@ header h1 {
     box-shadow: 0 2px 9px rgba(0, 0, 0, 0.05);
 }
 
-/*First change*/
-/* .country-card img {
-    width: 100%;
-    display: block;
-    height: 160px;
-    object-fit: cover;
-    padding:0;
-    /* padding: 24px;  
-} */
 
-/* Second change */
-
-/* 
 .country-card img {
+    display: block;
     width: 100%;
-    height: 160px;
+    aspect-ratio: 3 / 2;
+    height: auto;
     object-fit: contain;
-    display: block;
-} */
-
-.country-card img {
-    width: 100%;
-    height: 130px;
-    object-fit: cover;
-    display: block;
+    background-color: var(--white);
 }
 
 .card-body {
-    /* padding:24px;  */
-    padding: 20px 24px 24px 24px;
+      padding: 16px 20px;
 }
 
 
 .card-body h2 {
-    /* font-size: 1.1rem;
-    font-weight: 800;
-    margin: 0 0 16px 0;
-    color: var(--very-dark-blue-text); */
+
     font-size: 0.95rem;
-    /* Reduced from large heading size */
     font-weight: 600;
     margin: 0 0 12px 0;
-    /* Space below country title */
-    /* line-height: 1.2; */
+
 }
 
 .card-body p {
-    /* font-size: 0.88rem;
-    margin: 0 0 6px 0; /* Tight spacing between info lines */
+
     color: var(--very-dark-blue-text);
     font-size: 0.75rem;
-    /* Smaller, compact font size */
     margin: 0 0 4px 10px;
-    /* Tight vertical spacing between items */
-    line-height: .75;
+    line-height: 1.3;
 }
 
 .card-body p:last-child {
@@ -303,14 +271,6 @@ body.dark-mode .dropdown-menu li.selected {
 }
 
 
-Country details page flag #country-details img {
-    width: 400px;
-    max-width: 100%;
-    height: 250px;
-    object-fit: contain;
-    display: block;
-}
-
 /* Country details page layout */
 #country-details {
     padding: 30px 40px;
@@ -327,6 +287,8 @@ Country details page flag #country-details img {
 }
 
 
+
+
 /* Accessibility: visible keyboard focus */
 button:focus-visible,
 input:focus-visible,
@@ -335,26 +297,6 @@ input:focus-visible,
     outline-offset: 3px;
 }
 
-/* Accessibility: visible keyboard focus */
-button:focus-visible,
-input:focus-visible,
-.country-card:focus-visible {
-    outline: 3px solid #2563eb;
-    outline-offset: 3px;
-}
-
-
-/* Add spacing around country information */
-/* .country-card h3,
-.country-card p {
-    padding-left: 20px;
-} */
-/* 
-.country-card h3 {
-    font-size: 18px;
-    margin: 0 0 16px;
-    padding-left: 20px;
-}
 
 .country-card p {
     font-size: 14px;
