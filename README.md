@@ -1,201 +1,89 @@
 
-REST Countries Project - My Progress ( 09/10/26)
+# 🌍 REST Countries Project — Development & Progress Documentation
 
-1. Understood the project requirements and the features I needed to build.
+Welcome to the official documentation and progress log for the **REST Countries Project**. This document outlines the project overview, core features, technical implementation details, challenges faced, and deployment insights gained throughout development.
 
-2. Explored the existing HTML and CSS files to understand the project structure.
+---
 
-3. Decided to use the local `data.json` file first instead of connecting to the live API.
+## 1. Project Overview
 
-4. Used `fetch()` to load the country data and stored it in a JavaScript array.
+The REST Countries Project is a fully responsive web application that fetches global country data and displays detailed statistics, regional classifications, interactive border links, and a seamless light/dark mode experience.
 
-5. Created a function to display country information by creating HTML elements using JavaScript.
+---
 
-6. Displayed each country's flag, name, population, region, and capital.
+## 2. Core Features & Implementation
 
-7. Used CSS Grid to arrange the country cards and adjusted the flag sizes.
+### 2.1 Homepage & Data Integration
+1. **Data Source Transition:** Initially built using a local `data.json` file for fast prototyping, then successfully integrated with the live REST Countries API.
+2. **Pagination & Batch Fetching:** Handled API limits by implementing a `while` loop with pagination to fetch all **254 country entries** in batches of 100, combining them into a unified array (`allCountryObjects`).
+3. **Dynamic DOM Rendering:** Utilized `createElement()` and `appendChild()` to build country cards dynamically, displaying each country's **flag, name, population, region, and capital**.
+4. **Local Backups:** Saved retrieved API data into `api-countries-backup.json` to ensure robust local development and fallback support.
 
-8. Fixed issues such as duplicate country names and a JavaScript error caused by using a variable outside its function.
+### 2.2 Search & Filtering
+1. **Case-Insensitive Search:** Implemented instant search using JavaScript's `.includes()` method with lowercase conversion, supporting **partial matching** so users don't need to type full country names.
+2. **State Management:** Automatically clears search inputs and resets state appropriately on page reloads to maintain consistency between the search bar and the displayed grid.
+3. **Region Filtering:** Created a custom dropdown for Africa, Americas, Asia, Europe, and Oceania (plus an "All Regions" option).
+4. **Visual Region Highlight:** Added distinct styling to highlight the active region in the dropdown (supporting both **light and dark modes**) and cleared previous selections dynamically.
 
-9. Completed the homepage country grid. Next, I will implement the search functionality to find countries by name.
+### 2.3 Country Details & Border Navigation
+1. **Detailed View:** Clicking any country card opens a detailed page featuring native names, subregions, top-level domains, currencies, and languages.
+2. **Border Countries:** Parsed the `borders` property to match neighboring country codes and render interactive buttons. Clicking a border button instantly opens that neighboring country's details.
 
-REST Countries Project - My Progress ( 10/10/26)
+### 2.4 UI/UX, Accessibility & Responsive Design
+1. **Theme Switcher:** Integrated a toggle for **Dark and Light Modes** using JavaScript's `classList.toggle()` combined with CSS variables for smooth transitions.
+2. **Responsive Layouts:** Implemented CSS media queries with breakpoints tailored for desktop (4 columns), tablet (2 columns), and mobile (1 column) screens.
+3. **Accessibility (a11y):** Added alt text to flags, keyboard navigation support for cards, visible focus outlines for interactive elements, and appropriate ARIA attributes for the region dropdown.
 
-10.  Completed the search functionality , to find countries by name.
+---
 
-11. Completed the Filter Region functionality, to display the countries by region, selected from the dropdown list.
+## 3. Challenges Faced & Technical Solutions
 
-12. Completed the country details and border countries 
+### 3.1 API Authentication & CORS
+* **Challenge:** Encountered initial CORS errors when accessing the API from a local development environment and received warnings regarding the Authorization header.
+* **Solution:** Configured allowed origins in the API dashboard and utilized URL query parameters as an alternative method for passing credentials, deepening understanding of web security and CORS policies.
 
-13.  Implemented the Theme toggle function
+### 3.2 API Pagination & Missing Data
+* **Challenge:** Initial fetches were capped at 100 entries, causing border relationships (like Canada pointing to the USA) to break because the USA wasn't loaded in memory.
+* **Solution:** Implemented batch pagination with a `while` loop to capture all 250+ records successfully into `allCountryObjects`.
+* **Edge Case Note:** Identified that flag images for *South Ossetia, Abkhazia, Somaliland, and Northern Cyprus* returned empty URLs from the API. Verified via `.filter()` that these records weren't present in the baseline dataset and documented them for future edge-case handling.
 
-14.  i will be working on - Connecting the project to the live REST Countries API.
+### 3.3 Vercel Deployment & Serverless Routing
+* **Challenge:** Encountered a `404 error` on the deployed API endpoint because Vercel could not locate the serverless API route.
+* **Solution:** Corrected the project folder structure by moving the nested `api` folder to the repository root so Vercel could properly detect serverless functions.
 
-15. Added my local website address to the API's allowed origins.
+---
 
-16. Used a query parameter to pass the API key as an alternative to the Authorization header.
+## 4. Development Timeline & Progress Log
 
-17. Tested the API and received Country data successfully.
+### 4.1 Phase 1 — Project Foundation (09/10/26)
+1. Understood project requirements and planned key application features.
+2. Analyzed existing HTML and CSS structure.
+3. Used local `data.json` with `fetch()` to populate country data.
+4. Rendered cards dynamically with JavaScript DOM manipulation.
+5. Styled grid layout with CSS Grid and adjusted flag aspect ratios.
+6. Resolved scoping issues and duplicate name rendering bugs.
 
+### 4.2 Phase 2 — Interactive Features & API Integration (10/10/26)
+1. Built search functionality by country name.
+2. Built region dropdown filter with light/dark visual highlights.
+3. Built country detail view and linked neighboring border countries.
+4. Implemented theme toggle using CSS custom properties.
+5. Integrated live API using batch pagination and allowed origins config.
+6. Handled search reset on reload and accessibility focus outlines.
 
+### 4.3 Phase 3 — Refinement & Deployment
+1. Added full keyboard navigation and accessible focus management.
+2. Refined mobile and tablet media query breakpoints.
+3. Restructured repository layout for Vercel serverless deployment.
+4. Deployed and verified API route functionality in production.
+5. Live Demo:[View Live Demo](https://miniproject1-azure.vercel.app)
 
-### Challenge Faced: 
-## API Authentication and CORS
+---
 
-I initially got a CORS error because my local website was not allowed to access the API. I fixed it by adding my local website address to the allowed origins in the API dashboard. Later, I encountered a warning related to the Authorization header, so I tried passing the API key through a query parameter in the URL. This helped me understand how API authentication and CORS work.
+## 5. Key Learning Outcomes
 
-## Fetching Countries from the API
+* Mastery of dynamic JavaScript DOM manipulation (`createElement`, `appendChild`).
+* Practical experience working with asynchronous data fetching, pagination logic, and array manipulation (`.map()`, `.filter()`, `.includes()`).
+* Understanding of Web API authentication, CORS headers, and serverless folder conventions on Vercel.
+* Hands-on implementation of responsive CSS Grid, CSS Variables for theming, and web accessibility standards.
 
-Initially, I was fetching only 100 countries from the API using the `limit=100` parameter. When I clicked on Canada, its border information showed the USA, but the USA was not available in the list of countries loaded by my application. Because of this, the USA button was not displayed.
-
-To solve this problem, I updated my `fetchCountries()` function to fetch countries in batches of 100 using the API's pagination parameters. I used a `while` loop to request additional batches until the API indicated that there were no more countries to fetch. I combined the results into a single array called `allCountryObjects`.
-
-I then used my existing `map()` function to organize the API data into the format required by my application.
-
-### Displaying Border Countries
-
-Each country has a `borders` property containing the country codes of its neighboring countries. For example, Canada's border information contains the code `USA`.
-
-My `displayBorderCountries()` function searches the loaded `countries` array for a matching country code. When it finds a match, it creates a button displaying that country's name. Clicking the button opens the selected border country's details.
-
-### Testing
-
-* **Canada:** Confirmed that the United States appears as its border country.
-* **Germany:** Confirmed that Austria, Belgium, Czechia, Denmark, France, Luxembourg, the Netherlands, Poland, and Switzerland appear as border countries.
-
-This helped me understand how API pagination works and how country codes can be used to connect related data.
-
-
-### Missing Flag Images  
-
-The `flags` for `South Ossetia, Abkhazia, Somaliland, and Northern Cyprus` were not displaying when fetching country data from the API. I used console.log() to check the country list and inspect their flag URLs, which were empty.
-
-I then tested the local data.json file using JavaScript's .filter() method to check for these countries , . None of these places were found in the 250 country records, so I did not encounter the same issue with the local data.
-
-I plan to handle these additional flags separately after completing the main project features.
-
-
-### Highlighting the Selected Region
-Making the selected region in the dropdown visually clear.
-Removing the highlight from the previously selected region when a new region is selected.
-Applying the highlight styling in both light and dark modes.
-
-### Resetting the Search Field on Page Reload
-Noticed that the search field retained the previous search text after refreshing the page, even though all countries were displayed.
-Cleared the search field when loading the country list so that the search field and displayed countries remain consistent after a page reload.
-
-
-### Implementation Notes
-
-
-# Implemented the Display Function
-
-- Used `createElement()` to create country cards and their content dynamically.
-
-- Used `appendChild()` to add country flags and information to each card.
-
-- `Displayed country details` such as name, population, region, and capital.
-
-- `Reused` the same function to display all countries or only the countries matching the search.
-
-
-# Search Functionality
-
-- Used `.includes()` to find countries whose names contain the search text.
-
-- Converted country names and search text to `lowercase` to make the search case-insensitive.
-
-- `Partial searches are supported`, so users don't need to type the entire country name.
-
-- `Cleared the previous results` before displaying the matching countries.
-
-
-# Filter by Region
-
-- Created a custom dropdown with options for Africa, Americas, Asia, Europe, Oceania, and All Regions.
-
-- Added click events to identify the selected region.
-
-- Filtered the country cards based on the selected region.
-
-# Displaying Country Details
-
-- Added a click event to each country card.
-
-- When a card is clicked, displayed a detailed view of that country.
-
-- Included additional information such as subregion, native name, currencies, languages, and top-level domain.
-
-- Added a Back button to return to the country grid.
-
-# Displaying Border Countries
-
--Used each country's border codes to identify neighboring countries.
-
-- Matched the border codes with the country data.
-
-- Displayed the neighboring countries as buttons.
-
-- Added click events so users can open another country's details by clicking its button.
-
-# Implementing the Theme Switcher
-
-- Added a button to switch between dark mode and light mode.
-
-- Used JavaScript's classList.toggle() to add or remove the dark-mode class.
-
-- Updated the button text when the theme changed.
-
-- Used CSS variables and dark-mode styles to control the colors.
-
-# Fixing Issues During Development
-
-- Corrected an HTML element ID mismatch that caused JavaScript to return null.
-
-- Checked the data structure to access the correct country properties.
-
-- Used the browser console to identify errors and inspect search and filter results.
-
-- Fixed the hidden display issue by ensuring the country grid became visible when needed.
-
-- Corrected CSS variable names used by the dark-mode styles.
-
-### Country Data and API Integration
-
-Integrated the REST Countries API to retrieve country information.
-Retrieved 254 country entries using pagination.
-Mapped the API response into a consistent data structure for the application.
-Saved the retrieved country data in api-countries-backup.json for local development and backup purposes.
-Preserved the existing application features while preparing to transition from API-based data loading to local JSON data.
-
-### Development Notes
-
-* Loaded country data from a local JSON file during development to avoid repeated API requests.
-* Kept the API-fetching function in `script.js` for reference and future use.
-* Used JavaScript's `.includes()` method to support partial country-name searches.
-
-### Accessibility Improvements
-Added alt text to country flags.
-Added keyboard navigation for country cards.
-Added visible focus outlines for buttons, search input, and country cards.
-Added accessibility attributes to the region dropdown.
-
-### Responsive Design
-Added CSS media queries with breakpoints for tablet and mobile screens.
-Adjusted the country grid to display four columns on desktop, two columns on tablet, and one column on mobile.
-Adjusted header spacing and search and filter layouts for smaller screens.
-Improved country details page spacing for mobile screens.
-
-After using API
-
-Initially fetched 100 countries from the API.
-Used pagination to fetch additional countries in batches of 100.
-Combined the results into one array.
-Used country codes to find and display border countries as buttons.
-Tested the feature with Canada and Germany.
-
-
-Region Filter Highlight
-Added a visual highlight to the selected region in the dropdown menu.
-When a new region is selected, the previous highlight is removed and the newly selected region is highlighted.
-Added styling for both light and dark modes.
