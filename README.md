@@ -174,6 +174,12 @@ Preserved the existing application features while preparing to transition from A
 * Kept the API-fetching function in `script.js` for reference and future use.
 * Used JavaScript's `.includes()` method to support partial country-name searches.
 
+### Accessibility Improvements
+Added alt text to country flags.
+Added keyboard navigation for country cards.
+Added visible focus outlines for buttons, search input, and country cards.
+Added accessibility attributes to the region dropdown.
+
 After using API
 
 Initially fetched 100 countries from the API.

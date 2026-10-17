@@ -282,6 +282,14 @@ function displayCountries(countryList) {
         const countryCard = document.createElement("article");
         countryCard.classList.add("country-card");
 
+
+
+        // Accessibility attributes for country card
+
+        countryCard.setAttribute("tabindex", "0");
+        countryCard.setAttribute("role", "button");
+        countryCard.setAttribute("aria-label", `View details for ${countryList[i].name}`);
+
         // For country card's click event
         // countryCard.addEventListener("click", function () {
         //     display.hidden = true;
@@ -397,6 +405,15 @@ function displayCountries(countryList) {
             showCountryDetails(countryList[i]);
         });
 
+        // Accessibility: Allow keyboard navigation to trigger the same action as a click
+
+        countryCard.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                searchInput.value = "";
+                showCountryDetails(countryList[i]);
+            }
+        });
         //Creating the image element
         const countryFlag = document.createElement("img");
 
@@ -410,7 +427,7 @@ function displayCountries(countryList) {
         countryFlag.addEventListener("error", function () {
             countryFlag.style.display = "none";
         });
-        countryFlag.alt = `Flag of ${countryList[i].name}`;
+        // countryFlag.alt = `Flag of ${countryList[i].name}`;
 
 
         //Add the Flag to the country card
@@ -696,9 +713,16 @@ regionOptions.forEach(function (option) {
 const dropdownToggle = document.querySelector(".dropdown-toggle");
 const dropdownMenu = document.querySelector(".dropdown-menu");
 
+// dropdownToggle.addEventListener("click", function () {
+//     dropdownMenu.hidden = !dropdownMenu.hidden;
+
+// accessibility: Update aria-expanded attribute based on the dropdown state
+
 dropdownToggle.addEventListener("click", function () {
     dropdownMenu.hidden = !dropdownMenu.hidden;
+    dropdownToggle.setAttribute("aria-expanded", !dropdownMenu.hidden);
 });
+
 
 
 // regionInput.addEventListener("input",function(){

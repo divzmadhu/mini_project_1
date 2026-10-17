@@ -279,3 +279,44 @@ body.dark-mode .dropdown-menu li.selected {
     margin: 5px;
 }
 
+
+Country details page flag
+#country-details img {
+    width: 400px;
+    max-width: 100%;
+    height: 250px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Country details page layout */
+#country-details {
+    padding: 30px 40px;
+}
+
+/* Country details page flag */
+#country-details img {
+    width: 400px;
+    max-width: 100%;
+    height: 250px;
+    object-fit: contain;
+    display: block;
+    margin: 0 0 30px 10px;
+}
+
+
+/* Accessibility: visible keyboard focus */
+button:focus-visible,
+input:focus-visible,
+.country-card:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+}
+
+/* Accessibility: visible keyboard focus */
+button:focus-visible,
+input:focus-visible,
+.country-card:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+}
