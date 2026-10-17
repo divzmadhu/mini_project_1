@@ -40,13 +40,13 @@ header {
 }
 
 header h1 {
-    font-family: inherit;     
-    font-size: 1.1rem;      
-    font-weight: 800; 
-    line-height: 1;    
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 800;
+    line-height: 1;
     margin: 0;
     color: var(--very-dark-blue-text);
-} 
+}
 
 .theme-toggle {
     background: transparent;
@@ -101,7 +101,7 @@ header h1 {
 .search-container input {
     width: 70%;
     height: 45px;
-    padding: 0 24px 0 74px; 
+    padding: 0 24px 0 74px;
     border: none;
     border-radius: 5px;
     background-color: var(--white);
@@ -137,12 +137,12 @@ header h1 {
 }
 
 
-.display-container{
-    display:grid;
+.display-container {
+    display: grid;
     /* grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr; */
-    grid-template-columns:repeat(4,1fr);
-    gap:40px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
     /* max-width:1280px; */
     /* margin:0 auto; */
     /* padding:0 40px; */
@@ -151,6 +151,7 @@ header h1 {
 
 }
 
+
 .country-card {
     background-color: var(--white);
     border-radius: 5px;
@@ -158,29 +159,49 @@ header h1 {
     box-shadow: 0 2px 9px rgba(0, 0, 0, 0.05);
 }
 
-.country-card img {
+/*First change*/
+/* .country-card img {
     width: 100%;
     display: block;
     height: 160px;
     object-fit: cover;
     padding:0;
-    /* padding: 24px;  */
+    /* padding: 24px;  
+} */
+
+/* Second change */
+
+/* 
+.country-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    display: block;
+} */
+
+.country-card img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    display: block;
 }
 
 .card-body {
- /* padding:24px;  */
- padding: 20px 24px 24px 24px;
-} 
- 
+    /* padding:24px;  */
+    padding: 20px 24px 24px 24px;
+}
+
 
 .card-body h2 {
     /* font-size: 1.1rem;
     font-weight: 800;
     margin: 0 0 16px 0;
     color: var(--very-dark-blue-text); */
-    font-size: 0.95rem;      /* Reduced from large heading size */
+    font-size: 0.95rem;
+    /* Reduced from large heading size */
     font-weight: 600;
-    margin: 0 0 12px 0;       /* Space below country title */
+    margin: 0 0 12px 0;
+    /* Space below country title */
     /* line-height: 1.2; */
 }
 
@@ -188,8 +209,10 @@ header h1 {
     /* font-size: 0.88rem;
     margin: 0 0 6px 0; /* Tight spacing between info lines */
     color: var(--very-dark-blue-text);
-    font-size: 0.75rem;      /* Smaller, compact font size */
-    margin: 0 0 4px 10px;        /* Tight vertical spacing between items */
+    font-size: 0.75rem;
+    /* Smaller, compact font size */
+    margin: 0 0 4px 10px;
+    /* Tight vertical spacing between items */
     line-height: .75;
 }
 
@@ -199,24 +222,24 @@ header h1 {
 
 
 .dropdown-menu {
-list-style: none;
-margin: 5px 0 0;
-padding: 8px 0;
-background-color: var(--white);
-border-radius: 5px;
-box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
-width: 200px;
-color: var(--dark-gray);
+    list-style: none;
+    margin: 5px 0 0;
+    padding: 8px 0;
+    background-color: var(--white);
+    border-radius: 5px;
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    color: var(--dark-gray);
 }
 
 
 .dropdown-menu li {
-padding: 10px 24px;
-cursor: pointer;
+    padding: 10px 24px;
+    cursor: pointer;
 }
 
 .dropdown-menu li:hover {
-background-color: var(--very-light-gray); 
+    background-color: var(--very-light-gray);
 }
 
 .dropdown-menu li.selected {
@@ -280,8 +303,7 @@ body.dark-mode .dropdown-menu li.selected {
 }
 
 
-Country details page flag
-#country-details img {
+Country details page flag #country-details img {
     width: 400px;
     max-width: 100%;
     height: 250px;
@@ -319,4 +341,110 @@ input:focus-visible,
 .country-card:focus-visible {
     outline: 3px solid #2563eb;
     outline-offset: 3px;
+}
+
+
+/* Add spacing around country information */
+/* .country-card h3,
+.country-card p {
+    padding-left: 20px;
+} */
+/* 
+.country-card h3 {
+    font-size: 18px;
+    margin: 0 0 16px;
+    padding-left: 20px;
+}
+
+.country-card p {
+    font-size: 14px;
+    margin: 0 0 8px;
+    padding-left: 20px;
+} */
+
+.country-card h3 {
+    font-size: 17px;
+    padding-left: 20px;
+    margin: 0 0 10px;
+}
+
+.country-card p {
+    font-size: 13px;
+    padding-left: 20px;
+    margin: 0 0 6px;
+}
+
+
+/* Responsive Design */
+
+/* Tablet screens */
+@media (max-width: 1024px) {
+    .display-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        padding: 0 30px;
+    }
+
+
+    .header-container {
+        padding: 20px 30px;
+    }
+
+    .input-container {
+        padding: 0 30px;
+    }
+
+    .search-container input {
+        width: 100%;
+    }
+
+}
+
+/* Mobile screens */
+@media (max-width: 600px) {
+    .display-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 0 25px;
+    }
+
+
+
+    .header-container {
+        padding: 20px;
+    }
+
+    .header-container h1 {
+        font-size: 1rem;
+    }
+
+    .input-container {
+        padding: 0 25px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+    }
+
+    .search-container {
+        max-width: 100%;
+    }
+
+    .search-container input {
+        width: 100%;
+    }
+
+    .dropdown-toggle {
+        width: 200px;
+    }
+
+    #country-details {
+        padding: 20px;
+    }
+
+    #country-details img {
+        height: auto;
+        max-width: 100%;
+    }
+
+
 }

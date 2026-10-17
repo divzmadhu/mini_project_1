@@ -180,6 +180,12 @@ Added keyboard navigation for country cards.
 Added visible focus outlines for buttons, search input, and country cards.
 Added accessibility attributes to the region dropdown.
 
+### Responsive Design
+Added CSS media queries with breakpoints for tablet and mobile screens.
+Adjusted the country grid to display four columns on desktop, two columns on tablet, and one column on mobile.
+Adjusted header spacing and search and filter layouts for smaller screens.
+Improved country details page spacing for mobile screens.
+
 After using API
 
 Initially fetched 100 countries from the API.
